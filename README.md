@@ -8,7 +8,7 @@ List all OneDrive files and folders and write a log file which can be opened as 
 
 Get your app ID (client ID) and secret from [Microsoft Graph Quick Start](https://developer.microsoft.com/en-us/graph/quick-start) and download their code sample. You can find these settings in the file 'graph-tutorial/PrivateSettings.config'.
 
-Download this Visual Studio solution (graph-tutorial-onedrive), open it and overwrite `ida:AppID` and `ida:AppSecret` settings in 'graph-tutorial-onedrive/PrivateSettings.config' with your app ID and secret.
+Download this Visual Studio solution (graph-tutorial-onedrive), open it and overwrite `ida:AppID` and `ida:AppSecret` settings in 'PrivateSettings.config' with your app ID and secret.
 
 ## Build and Test
 
