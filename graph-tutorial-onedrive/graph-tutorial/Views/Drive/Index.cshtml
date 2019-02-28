@@ -1,0 +1,54 @@
+﻿@* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. *@
+@model IEnumerable<graph_tutorial.Helpers.CustomDriveItem>
+
+@{
+    ViewBag.Current = "Drive";
+}
+
+@functions{
+    public string ConvertToString(long size)
+    {
+        const long BytesInKiloByte = 1024;
+        const long BytesInMegaByte = 1048576;
+        const long BytesInGigaByte = 1073741824;
+        if (size >= BytesInGigaByte)
+            return string.Format("{0:#,##0.##} GB", (double)size / (double)BytesInGigaByte);
+        else if (size >= BytesInMegaByte)
+            return string.Format("{0:#,##0.##} MB", (double)size / (double)BytesInMegaByte);
+        else if (size >= BytesInKiloByte)
+            return string.Format("{0:#,##0.##} KB", (double)size / (double)BytesInKiloByte);
+        else
+            return string.Format("{0:n0} B", size);
+    }
+}
+
+<h1>@ViewBag.Current</h1>
+<p>Size = @ConvertToString((long)Model.Where(i => !i.IsFolder).Sum(i => i.Size))</p>
+<p>Files = @Model.Count(i => !i.IsFolder)</p>
+<p>Folders = @Model.Count(i => i.IsFolder)</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Path</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Size</th>
+            <th scope="col">Children</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(i => i.Path == "/drive/root:").OrderBy(i => (i.IsFolder ? "0" : "1")).ThenBy(i => i.Name))
+        {
+        <tr>
+            <td>@item.Path</td>
+            <td>@item.Name</td>
+            <td>@(item.IsFolder ? "Folder" : "File")</td>
+            <td style="text-align: right;">@ConvertToString((long)@item.Size)</td>
+            <td style="text-align: right;">
+                @if (item.IsFolder)
+                {@item.ChildCount}
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
