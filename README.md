@@ -2,7 +2,7 @@
 
 ## Introduction
 
-List all OneDrive files and folders and write a log file which can be opened as a csv file.
+List all OneDrive files and folders and write them to a csv file.
 
 ## Getting Started
 
@@ -12,8 +12,9 @@ Download this Visual Studio solution (graph-tutorial-onedrive), open it and over
 
 ## Build and Test
 
-Open the solution with Visual Studio and debug.
-Sign in and click the Drive menu option. The root contents of your OneDrive will be displayed and the full list of folders and files will be written in App_Data.
+Open the solution with Visual Studio and start.
+
+Sign in and click the Drive menu option. The root contents of your OneDrive will be displayed and the full list of folders and files will be available for Download in csv format.
 
 ## Acknowledgement
 
