@@ -1,4 +1,4 @@
-# How to run the completed project
+# How to run the complete project
 
 ## Prerequisites
 
